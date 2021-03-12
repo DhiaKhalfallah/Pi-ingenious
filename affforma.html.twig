@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+      {% block nav %}
+
+          {% include 'Inc/nav2.html.twig' %}
+
+      {% endblock %}
+
+
+{% block body %}
+    <!-- End Navigation -->
+    <div class="clearfix"></div>
+
+    <!-- Title Header Start -->
+    <section class="inner-header-title" style="background-image:url(../../assets/img/banner-5.jpg);" >
+        <div class="container">
+
+            <h1> Formation</h1>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+
+
+
+    <!-- Title Header End -->
+		
+		<!-- Candidate Profile Start -->
+        <section class="detail-desc advance-detail-pr gray-bg">
+            <div class="container white-shadow">
+                <div class="row">
+                    <div class="detail-pic"><img src="{{ asset("uploads/"~ formation.image )}}" class="" alt="" /><a href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a></div>
+                    <div class="detail-status"><span>{{formation.prix  }}</span></div>
+                </div>
+				
+                <div class="row bottom-mrg">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="advance-detail detail-desc-caption">
+                            <h4>{{ formation.nom }}</h4><span class="designation">{{ formation.description }}</span>
+                            <ul>
+                                <li><strong class="j-view">{{ formation.secteur }}</strong> Secteur</li>
+                                <li><strong class="j-applied">{{ formation.date | date('Y-m-d')}}</strong> Date</li>
+                                <li><strong class="j-shared">{{ formation.prix }} $</strong>Prix</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+				
+                <div class="row no-padd">
+                    <div class="detail pannel-footer">
+                        <div class="col-md-5 col-sm-5">
+                            <ul class="detail-footer-social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                            <div class="detail-pannel-footer-btn pull-right">
+                                <a href="{{ path('forma_modif',{"id":formation.id}) }}" class="footer-btn grn-btn" title="">Edit Now</a>
+                                <a href="{{ path("formation_suppression",{"id":formation.id}) }}" class="footer-btn blu-btn" title="">Delete Now</a></div>
+                        </div>
+                    </div>
+                </div>
+				
+            </div>
+        </section>
+
+
+ {% endblock %}

@@ -1,0 +1,108 @@
+<nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i
+                    class="fa fa-bars"></i></button>
+        <div class="navbar-header"><a class="navbar-brand" href="/"><img src="assets/img/logo-white.png"
+                                                                                  class="logo logo-display"
+                                                                                  alt=""><img
+                        src="assets/img/logo-white.png" class="logo logo-scrolled" alt=""></a></div>
+        <div class="collapse navbar-collapse" id="navbar-menu">
+        
+              <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% else %}
+                <li><a href="/signin-signup"><i class="fa fa-pencil" aria-hidden="true"></i>SignUp</a></li>
+                {% endif %}
+                <li><a href="/pricing"><i class="fa fa-sign-in" aria-hidden="true"></i>Pricing</a></li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="left-br"><a href="{{ path('logout') }}"
+                                       class="signin">Lougout</a></li>
+                {% else %}
+                <li class="left-br"><a href="/login"
+                                       class="signin">Sign In Now</a></li>
+                {% endif %}
+
+
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="dropdown megamenu-fw">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse</a>
+                    <ul class="dropdown-menu megamenu-content" role="menu">
+                        <li>
+                            <div class="row">
+                                <div class="col-menu col-md-3">
+                                    <h6 class="title">Main Pages</h6>
+
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            <li><a href="/">Home Page </a></li>
+                                            <li><a href="/freelancing">Freelancing</a></li>
+                                            <li><a href="/accordion">Accordion</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-menu col-md-3">
+                                    <h6 class="title">For Candidate</h6>
+
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.type==0 %}
+                                            <li><a href="{{ path('candidate-profile') }}">Candidate Profile</a></li>
+                                                {% else %}
+                                            {% endif %}
+                                            <li><a href="/search-new">Search Jobs</a></li>
+                                            {% if is_granted('ROLE_ENTEPRISE') %}
+                                            <li><a href="{{ path('offre_enteprise') }}">My Jobs</a></li> 
+                                            <li><a href="{{ path('interview_enteprise') }}">My Interview</a></li> 
+
+                                             {% endif %}
+                                               {% if is_granted('ROLE_CANDIDATE') %}
+                                            <li><a href="{{ path('mon_candidature') }}">My candidature</a></li> 
+
+                                             {% endif %}
+                                             <li><a href="{{ path ('job')}}">Browse Jobs</a></li>
+
+                                            <li><a href="/browsecompany">Browse Companies</a></li>
+                                            <li><a href="/create-resume">Create Resume</a></li>
+                                            <li><a href="/resume-detail">Resume</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                               
+
+                                <div class="col-menu col-md-3">
+
+                                    <h6 class="title">For Employer</h6>
+
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            <li><a href="/employer-profile">Employer Profile</a></li>
+                                            <li><a href="{{path ('create-job')}}">Create Job</a></li>
+                                            <li><a href="/manage-candidate">Manage Candidate</a></li>
+                                            <li><a href="/browse-resume">Browse Resume</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                              
+                                <div class="col-menu col-md-3">
+                                    <h6 class="title">Freelance Space</h6>
+
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            <li><a href="/freelancing-jobs">Freelancing Jobs</a></li>
+                                            <li><a href="/freelancers">Freelancers</a></li>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

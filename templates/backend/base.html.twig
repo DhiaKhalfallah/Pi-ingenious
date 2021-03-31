@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Khaddamni</title>
+        {% block stylesheets %}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('../assets2/images/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('../assets2/css/backend-plugin.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets2/css/backend.css?v=1.0.0') }}">
+    <link rel="stylesheet" href="{{ asset('../assets2/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets2/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets2/vendor/remixicon/fonts/remixicon.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets2/vendor/@icon/dripicons/dripicons.css') }}">
+
+    <link rel='stylesheet' href="{{ asset('../assets2/vendor/fullcalendar/core/main.css') }}" />
+    <link rel='stylesheet' href="{{ asset('../assets2/vendor/fullcalendar/daygrid/main.css') }}">
+    <link rel='stylesheet' href="{{ asset('../assets2/vendor/fullcalendar/timegrid/main.css') }}" />
+    <link rel='stylesheet' href="{{ asset('../assets2/vendor/fullcalendar/list/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('../assets2/vendor/mapbox/mapbox-gl.css') }}">  </head>
+
+        {% endblock %}
+
+
+    </head>
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<div class="wrapper">
+    {% block sidebar %}{% endblock %}
+
+           {% block nav %}{% endblock %}
+
+            {% block body %}{% endblock %}
+
+            {% include 'backend/include/footer.html.twig' %}
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="{{ asset('../assets2/js/backend-bundle.min.js') }}"></script>
+
+        <!-- Flextree Javascript-->
+        <script src="{{ asset('../assets2/js/flex-tree.min.js') }}"></script>
+        <script src="{{ asset('../assets2/js/tree.js') }}"></script>
+
+        <!-- Table Treeview JavaScript -->
+        <script src="{{ asset('../assets2/js/table-treeview.js') }}"></script>
+
+        <!-- Masonary Gallery Javascript -->
+        <script src="{{ asset('../assets2/js/masonry.pkgd.min.js') }}"></script>
+        <script src="{{ asset('../assets2/js/imagesloaded.pkgd.min.js') }}"></script>
+
+        <!-- Mapbox Javascript -->
+        <script src="{{ asset('../assets2/js/mapbox-gl.js') }}"></script>
+        <script src="{{ asset('../assets2/js/mapbox.js') }}"></script>
+
+        <!-- Fullcalender Javascript -->
+        <script src="{{ asset('../assets2/vendor/fullcalendar/core/main.js') }}"></script>
+        <script src="{{ asset('../assets2/vendor/fullcalendar/daygrid/main.js') }}"></script>
+        <script src="{{ asset('../assets2/vendor/fullcalendar/timegrid/main.js') }}"></script>
+        <script src="{{ asset('../assets2/vendor/fullcalendar/list/main.js') }}"></script>
+
+        <!-- SweetAlert JavaScript -->
+        <script src="{{ asset('../assets2/js/sweetalert.js') }}"></script>
+
+        <!-- Vectoe Map JavaScript -->
+        <script src="{{ asset('../assets2/js/vector-map-custom.js') }}"></script>
+
+        <!-- Chart Custom JavaScript -->
+        <script src="{{ asset('../assets2/js/customizer.js') }}"></script>
+
+        <!-- Chart Custom JavaScript -->
+        <script src="{{ asset('../assets2/js/chart-custom.js') }}"></script>
+        <script src="{{ asset('../assets2/js/charts/01.js') }}"></script>
+        <script src="{{ asset('../assets2/js/charts/02.js') }}"></script>
+
+        <!-- slider JavaScript -->
+        <script src="{{ asset('../assets2/js/slider.js') }}"></script>
+
+        <!-- Emoji picker -->
+        <script src="{{ asset('../assets2/vendor/emoji-picker-element/index.js') }}" type="module"></script>
+
+        <!-- app JavaScript -->
+        <script src="{{ asset('../assets2/js/app.js') }}"></script>
+
+    {% endblock %}
+    </body>
+
+</html>

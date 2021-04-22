@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="art_comm.Controllers.ListBlogController">
+   <children>
+      <TableView fx:id="blog" layoutX="1.0" layoutY="59.0" prefHeight="250.0" prefWidth="774.0">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="89.60000896453857" text="ID" />
+            <TableColumn fx:id="user" prefWidth="123.99996948242188" text="USER" />
+            <TableColumn fx:id="cat" prefWidth="124.79991149902344" text="CATEGORIE" />
+            <TableColumn fx:id="date" minWidth="0.0" prefWidth="117.60003662109375" text="DATE" />
+            <TableColumn fx:id="contenu" minWidth="0.0" prefWidth="110.40008544921875" text="CONTENU" />
+            <TableColumn fx:id="titre" prefWidth="107.19989013671875" text="TITRE" />
+            <TableColumn fx:id="image" prefWidth="134.4000244140625" text="IMAGE" />
+            <TableColumn fx:id="image1" prefWidth="134.4000244140625" text="IMAGE" />
+            <TableColumn fx:id="image2" prefWidth="134.4000244140625" text="IMAGE" />
+         </columns>
+      </TableView>
+      <Button fx:id="add" layoutX="723.0" layoutY="17.0" mnemonicParsing="false" onMousePressed="#add" text="ADD" />
+      <Button fx:id="refresh" layoutX="643.0" layoutY="17.0" mnemonicParsing="false" onMousePressed="#refresh" text="Refresh" />
+      <Button fx:id="pdf" layoutX="581.0" layoutY="16.0" mnemonicParsing="false" onMousePressed="#pdf" text="PDF" />
+      <Button fx:id="update" layoutX="313.0" layoutY="514.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="delete" layoutX="421.0" layoutY="514.0" mnemonicParsing="false" text="Delete" />
+      <TextField fx:id="search" layoutX="17.0" layoutY="17.0" promptText="search" />
+      <SplitMenuButton layoutX="428.0" layoutY="16.0" mnemonicParsing="false" text="Tri">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#triUp" text="TriUp" />
+            <MenuItem mnemonicParsing="false" onAction="#triDown" text="TriDown" />
+         </items>
+      </SplitMenuButton>
+      <Button layoutX="508.0" layoutY="16.0" mnemonicParsing="false" onMousePressed="#chart" text="Chart" />
+      <Button fx:id="sms" layoutX="361.0" layoutY="16.0" mnemonicParsing="false" onMousePressed="#sms" text="Sms" />
+      <Label fx:id="userl" layoutX="85.0" layoutY="367.0" text="User" />
+      <Label fx:id="catl" layoutX="59.0" layoutY="411.0" text="Categorie" />
+      <Label fx:id="datel" layoutX="471.0" layoutY="358.0" text="Date" />
+      <Label fx:id="imagel" layoutX="467.0" layoutY="476.0" text="Image" />
+      <Label fx:id="contenul" layoutX="458.0" layoutY="419.0" prefHeight="18.0" prefWidth="52.0" text="Contenu" />
+      <Label fx:id="titrel" layoutX="73.0" layoutY="467.0" text="Titre" />
+      <TextField fx:id="user1" layoutX="157.0" layoutY="363.0" />
+      <TextField fx:id="contenu1" layoutX="564.0" layoutY="415.0" />
+      <DatePicker fx:id="date1" layoutX="564.0" layoutY="362.0" prefHeight="26.0" prefWidth="159.0" />
+      <TextField fx:id="cat1" layoutX="161.0" layoutY="406.0" />
+      <TextField fx:id="titre1" layoutX="161.0" layoutY="454.0" />
+      <Button fx:id="attach1" layoutX="711.0" layoutY="472.0" mnemonicParsing="false" onMousePressed="#attach" text="Attach" />
+      <TextField fx:id="imapa1" layoutX="564.0" layoutY="472.0" prefHeight="26.0" prefWidth="119.0" />
+      <Label fx:id="idl" layoutX="83.0" layoutY="330.0" text="Id" />
+      <TextField fx:id="id1" layoutX="157.0" layoutY="326.0" />
+   </children>
+</AnchorPane>

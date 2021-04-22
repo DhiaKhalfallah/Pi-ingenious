@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="rootps" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="art_comm.Controllers.SplashScreenController">
+   <children>
+      <Pane fx:id="rootpane" />
+      <ImageView fitHeight="271.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/blba.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</StackPane>

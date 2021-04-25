@@ -166,8 +166,54 @@ String req="select * from Candidate where id ="+id;
         } catch (SQLException ex) {
             Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;    }
-     
+        return false;   
+    }
+    
+        public Candidate authenticateUser(String Email,String Password) {
+          String req="select id,password from user where email ='"+Email+"' ";
+           int id=0 ; 
+          Candidate p=new Candidate();
+
+        try {
+            rs=st.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+                id=rs.getInt(1);
+                p.setPassword(rs.getString(2));
+            //}  
+        } catch (SQLException ex) {
+            Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Candidate 
+        String req1="select * from Candidate where id ="+id;
+
+         try {
+             
+            rs=st.executeQuery(req1);
+           // while(rs.next()){
+            rs.next();
+                p.setId(rs.getInt(1));
+                p.setNom(rs.getString(2));
+                p.setPrenom(rs.getString(3));
+                p.setTel(rs.getInt(4));
+                p.setPays(rs.getString(5));
+                p.setGouvernorat(rs.getString(6));
+                p.setAdresse(rs.getString(7));
+                p.setCode_postal(rs.getInt(8));
+                p.setBirthday(rs.getString(9));
+                p.setProfile_pic(rs.getString(10));
+                p.setCv(rs.getString(11));
+                p.setAbout_you(rs.getString(12));
+               
+            //}  
+        } catch (SQLException ex) {
+            Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    return p;     
+        
+        }
+
 
     
 }

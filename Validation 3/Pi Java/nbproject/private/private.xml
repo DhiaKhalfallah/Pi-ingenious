@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/controllers/DataValidation.java</file>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/views/ItemController.java</file>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/art_comm/Controllers/AcceuillBController.java</file>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/controllers/RegisterController.java</file>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/art_comm/Views/ListeCController.java</file>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/art_comm/Views/ListeRecController.java</file>
-            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/views/ClaimController.java</file>
+            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/controllers/LoginController.java</file>
+            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/Dao/CandidateDao.java</file>
+            <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/com/pi/Entities/Session.java</file>
             <file>file:/C:/Users/Dhia/Desktop/Pi%20Java/src/drapo/dashboard/HomeController.java</file>
         </group>
     </open-files>

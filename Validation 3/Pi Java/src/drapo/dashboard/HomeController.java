@@ -170,6 +170,7 @@ public class HomeController implements Initializable {
     private Pane pn_EditP;
     @FXML
     private FlowPane pn_recScroll;
+    private Candidate currentUser ; 
 
     /**
      * Initializes the controller class.
@@ -177,7 +178,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          
-      
+
                     
                // Candidate list
         
@@ -191,28 +192,7 @@ public class HomeController implements Initializable {
                loader = new FXMLLoader(getClass().getResource("/com/pi/views/Item.fxml"));
             try {
                  n=(Node) loader.load() ;
-                         int tel1= can.getTel();
-                         Integer tell = new Integer(tel1);
-                         String mobile = tell.toString();
-                         int postal= can.getCode_postal();
-                         Integer postal1 = new Integer(postal);
-                         String code = postal1.toString();
-                           int idt= can.getId();
-                         Integer id1 = new Integer(idt);
-                         String id = id1.toString();
-                         LocalDate date = LocalDate.parse(can.getBirthday());
-                 tfNom.setText(can.getNom());
-                 tfPrenom.setText(can.getPrenom());
-                 tfTel.setText(mobile);
-                 tfCodePostal.setText(code);
-                 TfPays.setText(can.getPays());
-                 tfGouvernorat.setText(can.getGouvernorat());
-                 tfAdresse.setText(can.getAdresse());
-                 tfBday.setValue(date);
-                 tfPic.setText(can.getProfile_pic());
-                 tfCV.setText(can.getCv());
-                 tfAboutyou.setText(can.getAbout_you());
-                 tfid.setText(id);
+                   
                  
                  
              } catch (IOException ex) {
@@ -229,7 +209,7 @@ public class HomeController implements Initializable {
 
             
         }
-        
+
       // end list
       
       //list Rec
@@ -419,12 +399,40 @@ public class HomeController implements Initializable {
 
     @FXML
     private void editredirect(MouseEvent event) {
+            int idt= currentUser.getId();
+                         Integer id1 = new Integer(idt);
+                         String id = id1.toString();
+                               int tel1= currentUser.getTel();
+                         Integer tell = new Integer(tel1);
+                         String mobile = tell.toString();
+                         int postal= currentUser.getCode_postal();
+                         Integer postal1 = new Integer(postal);
+                         String code = postal1.toString();
+                        
+                         LocalDate date = LocalDate.parse(currentUser.getBirthday());
+                 tfNom.setText(currentUser.getNom());
+                 tfPrenom.setText(currentUser.getPrenom());
+                 tfTel.setText(mobile);
+                 tfCodePostal.setText(code);
+                 TfPays.setText(currentUser.getPays());
+                 tfGouvernorat.setText(currentUser.getGouvernorat());
+                 tfAdresse.setText(currentUser.getAdresse());
+                 tfBday.setValue(date);
+                 tfPic.setText(currentUser.getProfile_pic());
+                 tfCV.setText(currentUser.getCv());
+                 tfAboutyou.setText(currentUser.getAbout_you());
+        tfid.setText(id);
         pn_EditP.toFront();
     }
 
     private void dash(MouseEvent event) {
         
         
+    }
+    
+    public void setSession(Candidate c)
+    {
+     currentUser = c ; 
     }
     
     

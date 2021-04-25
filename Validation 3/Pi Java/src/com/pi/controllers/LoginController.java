@@ -4,6 +4,9 @@ import animatefx.animation.FadeIn;
 import art_comm.Controllers.ListBlogController;
 import art_comm.Controllers.SplashScreenController;
 import com.jfoenix.controls.JFXButton;
+import com.pi.Dao.CandidateDao;
+import com.pi.Entities.Candidate;
+import drapo.dashboard.HomeController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +24,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -30,6 +36,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.StageStyle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * FXML Controller class
@@ -46,6 +53,12 @@ public class LoginController implements Initializable {
     private ImageView exit;
     @FXML
     private JFXButton loginButton1;
+    @FXML
+    private TextField Email;
+    @FXML
+    private PasswordField Password;
+    @FXML
+    private Label error;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,14 +95,48 @@ public class LoginController implements Initializable {
     @FXML
     private void Loging(MouseEvent event) throws IOException {
            
-  
-            Parent root = FXMLLoader.load(getClass().getResource("/com/pi/views/Home.fxml"));
+            CandidateDao c= new CandidateDao();
+            Candidate ca = new Candidate();
+            Candidate can = new Candidate();
+            ca=c.authenticateUser(Email.getText(), Password.getText());
+            FXMLLoader loader;
+            
+            if (ca.equals(can))
+            {
+                              error.setText("Please Check Your Email!");
+
+            }
+            else
+            {
+                   String pwd=ca.getPassword();
+                   String Hashed = "$2a" + pwd.substring(3);
+                boolean test=BCrypt.checkpw(Password.getText(), Hashed);
+            if (test)
+            { System.out.println(test);
+               loader = new FXMLLoader( getClass().getResource( "/com/pi/views/Home.fxml" ));
+              Scene scene = new Scene(loader.load());
+              Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();   
+              stage.setScene(scene);
+
+  HomeController controller = loader.getController();
+  controller.setSession(ca);
+
+  stage.show();
+            }
+            
+            else
+            {
+                error.setText("Please Check Your Password!");
+            }
+
+            }
+          //  Parent root = FXMLLoader.load(getClass().getResource("/com/pi/views/Home.fxml"));
          
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-                new FadeIn(root).play();
+            //    Scene scene = new Scene(root);
+                //Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+              //  stage.setScene(scene);
+                //stage.show();
+                //new FadeIn(root).play();
          
 
     }

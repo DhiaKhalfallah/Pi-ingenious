@@ -294,6 +294,7 @@
                            </graphic>
                         </Button>
                         <Button fx:id="excel" layoutX="797.0" layoutY="2.0" mnemonicParsing="false" onMousePressed="#excel" prefHeight="45.0" prefWidth="167.0" style="-fx-background-color: #0fbcf9; -fx-background-radius: 0px; -fx-text-fill: white; -fx-font-family: Quicksand; -fx-font-weight: Bold; -fx-font-size: 17px;" text="Export to EXCEL" />
+                        <Button fx:id="Stats" layoutX="696.0" layoutY="2.0" mnemonicParsing="false" onMousePressed="#OpenStat" prefHeight="45.0" prefWidth="101.0" style="-fx-background-color: #0fbcf9; -fx-background-radius: 0px; -fx-text-fill: white; -fx-font-family: Quicksand; -fx-font-weight: Bold; -fx-font-size: 17px;" text="Stats" />
                      </children>
                   </Pane>
                   <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">

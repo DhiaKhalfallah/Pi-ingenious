@@ -139,6 +139,8 @@ public class ListeCController implements Initializable {
     private TextField id;
     @FXML
     private Button excel;
+    @FXML
+    private Button Stats;
 
     /**
      * Initializes the controller class.
@@ -414,6 +416,22 @@ public class ListeCController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(ListeRecController.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+
+    @FXML
+    private void OpenStat(MouseEvent event) {
+          try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/com/pi/views/Stat.fxml"));
+                 Stage stage = new Stage();
+            stage.setTitle("Stats");
+            stage.setScene(new Scene(page1, 1600, 900));
+            stage.show();
+      
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ListeRecController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
     }
     
 }

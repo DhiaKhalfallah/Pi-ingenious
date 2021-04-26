@@ -224,11 +224,11 @@ public class ListeRecController implements Initializable {
 
 
                 if (item.getCstatus()==1) {
-                    setStyle("-fx-background-color: red");
+                    setStyle("-fx-background-color: #FF7676" );
 }
                 else {
                     //Here I see if the row of this cell is selected or not
-                    setStyle("-fx-background-color: green"); //The background of the cell in yellow
+                    setStyle("-fx-background-color: #85FF76"); //The background of the cell in yellow
                      
                     
                 }

@@ -30,6 +30,10 @@ public class ListData {
         entreprise= pdao2.displayAll();
         ReclamationDao pdao3=ReclamationDao.getInstance();
         claim= pdao3.displayAll();
+        
+        
+        
+        
     }
      public ObservableList<Candidate>getCandidate(){
         return candidate;

@@ -326,11 +326,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
-                  <Button fx:id="refresh1" layoutX="1148.0" layoutY="30.0" mnemonicParsing="false" onMousePressed="#refresh" prefHeight="45.0" prefWidth="101.0" style="-fx-background-color: #0fbcf9; -fx-background-radius: 0px; -fx-text-fill: white; -fx-font-family: Quicksand; -fx-font-weight: Bold; -fx-font-size: 17px;" text="Refresh">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
                   <JFXButton fx:id="update" buttonType="RAISED" onMousePressed="#updateCan" prefHeight="47.0" prefWidth="107.0" ripplerFill="#0fbcf9" style="-fx-background-color: #0fbcf9;" text="Update" textFill="WHITE">
                      <effect>
                         <DropShadow color="#12e5ff" height="55.21" radius="29.4375" width="64.54" />

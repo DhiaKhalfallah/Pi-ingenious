@@ -83,3 +83,6 @@ and open the template in the editor.
 .jfx-date-picker .jfx-text-field{
     -jfx-unfocus-color: #0fbcf9;
 }
+.table-row-cell {
+    -fx-font-size:15px;          
+}

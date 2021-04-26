@@ -340,7 +340,7 @@
             </HBox>
             <HBox alignment="CENTER" />
             <TextField fx:id="id" prefHeight="25.0" prefWidth="68.0" visible="false" />
-            <TableView fx:id="RecTable" prefHeight="704.0" prefWidth="1668.0">
+            <TableView fx:id="RecTable" fixedCellSize="50.0" prefHeight="704.0" prefWidth="1668.0" stylesheets="@../Styles/style.css">
                <columns>
                   <TableColumn fx:id="idC" prefWidth="43.0" text="id" />
                   <TableColumn fx:id="userC" prefWidth="53.0" text="user_id" />

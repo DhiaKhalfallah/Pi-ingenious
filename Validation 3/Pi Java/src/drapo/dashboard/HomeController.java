@@ -51,6 +51,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
@@ -77,8 +78,7 @@ public class HomeController implements Initializable {
 
                   String Candidate[];
                   
-          ListData listdata1 = new ListData();
-          private ObservableList<Reclamation> claim2=FXCollections.observableArrayList();
+        private ObservableList<Reclamation> reclam=FXCollections.observableArrayList();
               private ObservableList<Reclamation> claimup=FXCollections.observableArrayList();
 
                   private ObservableList<Reclamation> claimdown=FXCollections.observableArrayList();
@@ -171,15 +171,33 @@ public class HomeController implements Initializable {
     @FXML
     private FlowPane pn_recScroll;
     private Candidate currentUser ; 
-
+    private ObservableList<Reclamation> List1;
+    private Label name;
+    @FXML
+    private Label bday;
+    @FXML
+    private Label adress;
+    @FXML
+    private Label city;
+    @FXML
+    private Label pays;
+    @FXML
+    private Label tel;
+    @FXML
+    private Label mail;
+    @FXML
+    private Label prenom;
+    @FXML
+    private Label nom;
+    @FXML
+    private Label about;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         
+        pn_BrowseCan.toFront();
 
-                    
                // Candidate list
         
         ObservableList<Candidate> List=listdata.getCandidate();
@@ -214,33 +232,7 @@ public class HomeController implements Initializable {
       
       //list Rec
       
-          ObservableList<Reclamation> List1=listdata1.getReclamation();
-         Node n1 = null  ;
-         FXMLLoader  loadern;
-        for(Reclamation rec:List1)
-        {
-            
-            
-               loadern = new FXMLLoader(getClass().getResource("/com/pi/views/claim.fxml"));
-            try {
-                 n1=(Node) loadern.load() ;
-               
-                 
-             } catch (IOException ex) {
-                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            ClaimController controller = loadern.<ClaimController>getController();
-             try {
-                 controller.initData(rec);
-             } catch (FileNotFoundException ex) {
-                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-             
-            pn_recScroll.getChildren().add(n1);
-
-            
-        }
-
+  
         
     }    
 
@@ -261,6 +253,21 @@ public class HomeController implements Initializable {
 
     @FXML
     private void Profile(MouseEvent event) {
+        int tel1= currentUser.getTel() ; 
+         Integer tell = new Integer(tel1);
+        String mobile = tell.toString();
+      nom.setText(currentUser.getNom());
+     bday.setText(currentUser.getBirthday());
+     adress.setText(currentUser.getAdresse());
+     city.setText(currentUser.getGouvernorat());
+    pays.setText(currentUser.getPays());
+     tel.setText(mobile);
+     mail.setText(currentUser.getEmail());
+     prenom.setText(currentUser.getPrenom());
+     nom.setText(currentUser.getNom());
+     about.setText(currentUser.getAbout_you());
+        
+            
             pn_MyProfile.toFront();
     }
 
@@ -287,6 +294,37 @@ public class HomeController implements Initializable {
 
     @FXML
     private void CheckCLaim(MouseEvent event) {
+            pn_recScroll.getChildren().clear();
+         ReclamationDao pdao4=ReclamationDao.getInstance();
+        reclam= pdao4.displayBySession(currentUser.getId());  
+         List1=reclam;
+                  
+         Node n1 = null  ;
+         FXMLLoader  loadern;
+        for(Reclamation rec:List1)
+        {
+            
+            
+               loadern = new FXMLLoader(getClass().getResource("/com/pi/views/claim.fxml"));
+            try {
+                 n1=(Node) loadern.load() ;
+               
+                 
+             } catch (IOException ex) {
+                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            ClaimController controller = loadern.<ClaimController>getController();
+             try {
+                 controller.initData(rec);
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             
+            pn_recScroll.getChildren().add(n1);
+
+            
+        }
+
      pn_BrowseClaims.toFront();
     }
 
@@ -353,9 +391,9 @@ public class HomeController implements Initializable {
     @FXML
     private void addClaim(MouseEvent event) {
         
-        int user_id=53 ;
+        int user_id=currentUser.getId() ;
         int status=1;
-        String user_email="dhia@gmail.com";
+        String user_email=currentUser.getEmail();
         String subject=tfSubject.getText();
         String claim=tfclaim.getText();
         Date date = new Date();  

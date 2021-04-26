@@ -30,11 +30,28 @@ import javafx.util.Duration;
 import javax.swing.JFileChooser;
 import org.mindrot.jbcrypt.BCrypt;
 import com.pi.controllers.DataValidation;
+import static com.pi.controllers.LoginController.sendMail;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import java.util.Locale;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import static tray.animations.AnimationType.FADE;
+import static tray.notification.NotificationType.NOTICE;
+import static tray.notification.NotificationType.SUCCESS;
+import tray.notification.TrayNotification;
 
 
 public class RegisterController implements Initializable {
@@ -122,8 +139,11 @@ public class RegisterController implements Initializable {
     }
 
     @FXML
-    private void addCan(MouseEvent event) throws IOException {
-         String email= tfEmail.getText() ; 
+    private void addCan(MouseEvent event) throws IOException, Exception {
+        int tel=0;
+        int codep=0;
+        DataValidation validator = new DataValidation();
+        String email= tfEmail.getText() ; 
         String passwordToHash= tfPassword.getText() ; 
         String nom= tfNom.getText() ; 
         String prenom= tfPrenom.getText() ; 
@@ -136,22 +156,39 @@ public class RegisterController implements Initializable {
         String about= tfAboutyou.getText() ; 
         String role="[\"ROLE_CANDIDATE\"]" ; 
         String typeC="candidate" ; 
-        String vertoken="Active" ; 
+        String vertoken=cToken(email) ; 
         String passchange="none" ; 
-        int tel= Integer.parseInt(tfTel.getText()) ; 
-        int codep= Integer.parseInt(tfCodePostal.getText()) ; 
+        if(validator.textNumeric(tfTel) && validator.textNumeric(tfCodePostal) )
+        {
+            if(validator.dataLength(tfTel,"8") && validator.dataLength(tfCodePostal,"4"))
+            {
+        tel= Integer.parseInt(tfTel.getText()) ; 
+        codep= Integer.parseInt(tfCodePostal.getText()) ; 
+            }
+        }
         int type=0 ; 
         int status=0 ;
         String password="";
          
         password= BCrypt.hashpw(passwordToHash, BCrypt.gensalt());
 
-       
-        Candidate c= new  Candidate(nom,prenom,pays,gouvernorat,adresse,birthday,pic,cv,about,tel,codep,email,password,type,role,typeC,status,vertoken,passchange);
+        //Candidate c= new  Candidate(nom,prenom,pays,gouvernorat,adresse,birthday,pic,cv,about,tel,codep,email,password,type,role,typeC,status,vertoken,passchange);
+        
+        //CandidateDao can= new CandidateDao() ;
+        //can.insert(c);
+        if(validator.isNotEmpty(tfEmail) && validator.isNotEmpty(tfPassword) && validator.isNotEmpty(tfNom) && validator.isNotEmpty(tfPrenom) && validator.isNotEmpty(tfGouvernorat) && validator.isNotEmpty(tfAdresse) && validator.isNotEmpty(tfAboutyou) && validator.isNotEmpty(tfPic) && validator.isNotEmpty(tfCV) && validator.isNotEmpty(tfTel) && validator.isNotEmpty(tfCodePostal)
+){
+            if (validator.emailFormat(tfEmail) && validator.textNumeric(tfTel) && validator.textNumeric(tfCodePostal) && validator.dataLength(tfTel,"8") && validator.dataLength(tfCodePostal,"4") && validator.textAlphabet(tfNom) && validator.textAlphabet(tfPrenom) && validator.textAlphabet(tfGouvernorat) )
+            {
+         Candidate c= new  Candidate(nom,prenom,pays,gouvernorat,adresse,birthday,pic,cv,about,tel,codep,email,password,type,role,typeC,status,vertoken,passchange);
         
         CandidateDao can= new CandidateDao() ;
-        can.insert(c);
-        
+        can.insert(c);  
+        String body = "Follow the link  http://127.0.0.1:8000/verify , Your verification token is "+vertoken;
+        sendMail(email,body);
+        TrayNotification tray = new TrayNotification("Account verification", "A link has been sent to your Email",NOTICE);
+        tray.setAnimationType(FADE);
+        tray.showAndWait();       
         Parent root = FXMLLoader.load(getClass().getResource("/com/pi/views/Login.fxml"));
 
         Scene scene = createAccountButton.getScene();
@@ -169,6 +206,8 @@ public class RegisterController implements Initializable {
             parentContainer.getChildren().remove(container);
         });
         timeline.play();
+            }
+        }
         
     }
 
@@ -204,6 +243,81 @@ public class RegisterController implements Initializable {
                         }
     }
     
+    public String cToken(String passwordToHash )
+    {
+         
+        String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(passwordToHash.getBytes());
+            //Get the hash's bytes 
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        } 
+        catch (NoSuchAlgorithmException e) 
+        {
+            e.printStackTrace();
+        }
+        
+        return generatedPassword ; 
+    }
+    
+         public static void sendMail(String recepient , String body) throws Exception {
+        System.out.println("Preparing to send email");
+        Properties properties = new Properties();
+
+        //Enable authentication
+        properties.put("mail.smtp.auth", "true");
+        //Set TLS encryption enabled
+        properties.put("mail.smtp.starttls.enable", "true");
+        //Set SMTP host
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        //Set smtp port
+        properties.put("mail.smtp.port", "587");
+
+        //Your gmail address
+        String myAccountEmail = "jobby.contact@gmail.com";
+        //Your gmail password
+        String password = "azerty147852369";
+
+        //Create a session with account credentials
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
+
+        //Prepare email message
+        Message message = prepareMessage(session, myAccountEmail, recepient , body);
+
+        //Send mail
+        Transport.send(message);
+    }
+
+    private static Message prepareMessage(Session session, String myAccountEmail, String recepient , String body) {
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(myAccountEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject("Password Change Request");
+            message.setText(body);
+            return message;
+        } catch (Exception ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }  
   
 }
 

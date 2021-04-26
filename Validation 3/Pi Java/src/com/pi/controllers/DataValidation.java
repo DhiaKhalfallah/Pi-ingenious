@@ -5,10 +5,12 @@
  */
 package com.pi.controllers;
 
+import animatefx.animation.Shake;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.scene.control.TextArea;
 
 /**
  *
@@ -35,59 +37,76 @@ public class DataValidation {
     }
    */ 
     
-public static boolean dataLength(TextField inputTextField, Label inputLabel, String validationText, String requiredLength) {
+public static boolean dataLength(TextField inputTextField, String requiredLength) {
         boolean isDataLength = true;
         String validationString = null;
 
         if (!inputTextField.getText().matches("\\b\\w" + "{" + requiredLength + "}")) {
             isDataLength = false;
-            validationString = validationText;
+                    inputTextField.setStyle("-fx-border-color: red");
+                            new Shake(inputTextField).play();
+
 
         }
-        inputLabel.setText(validationString);
+        else
+        {
+                        inputTextField.setStyle("-fx-border-color: transparent");
+
+        }
         return isDataLength;
 
     }
-    public static boolean textAlphabet(TextField inputTextField, Label inputLabel, String validationText) {
+    public static boolean textAlphabet(TextField inputTextField) {
         boolean isAlphabet = true;
         String validationString = null;
 
         if (!inputTextField.getText().matches("[a-z A-Z]+")) {
             isAlphabet = false;
-            validationString = validationText;
+                     inputTextField.setStyle("-fx-border-color: red");
+                            new Shake(inputTextField).play();
+        }
+  else
+        {
+                        inputTextField.setStyle("-fx-border-color: transparent");
 
         }
-        inputLabel.setText(validationString);
-
-        System.out.println(inputTextField.getText().matches("[a-z A-Z]"));
         return isAlphabet;
 
     }
 
-    public static boolean textNumeric(TextField inputTextField, Label inputLabel, String validationText) {
+    public static boolean textNumeric(TextField inputTextField) {
         boolean isNumeric = true;
-        String validationString = null;
 
         if (!inputTextField.getText().matches("[0-9]+")) {
             isNumeric = false;
-            validationString = validationText;
+                    inputTextField.setStyle("-fx-border-color: red");
+        new Shake(inputTextField).play();
 
         }
-        inputLabel.setText(validationString);
+        else
+        {
+            inputTextField.setStyle("-fx-border-color: transparent");
+
+        }
+        
         return isNumeric;
 
     }
 
-    public static boolean emailFormat(TextField inputTextField, Label inputLabel, String validationText) {
+    public static boolean emailFormat(TextField inputTextField) {
         boolean isEmail = true;
-        String validationString = null;
 
         if (!inputTextField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com")) {
             isEmail = false;
-            validationString = validationText;
+        inputTextField.setStyle("-fx-border-color: red");
+        new Shake(inputTextField).play();
 
         }
-        inputLabel.setText(validationString);
+          else
+        {
+            inputTextField.setStyle("-fx-border-color: transparent");
+
+        }
         return isEmail;
 
     }
@@ -108,29 +127,48 @@ public static boolean dataLength(TextField inputTextField, Label inputLabel, Str
     }
 
     //Regular Expressions: zMail: \z[0-9]{7}
-    public static boolean textFieldIsNull(TextField inputTextField, Label inputLabel, String validationText) {
-        boolean isNull = false;
-        String validationString = null;
+    public static boolean isNotEmpty(TextField inputTextField) {
+        boolean isNull = true;
 
-        System.out.println("*******************************************************");
 
         //point out difference between null and isEmpty() *FIND OUT WHEN TO USE NULL
         if (inputTextField.getText().isEmpty()) {
-            isNull = true;
-            validationString = validationText;
+            isNull = false;
+              inputTextField.setStyle("-fx-border-color: red");
+        new Shake(inputTextField).play();
+        }
+          else
+        {
+            inputTextField.setStyle("-fx-border-color: transparent");
 
         }
-        String isEmpty = Boolean.toString(inputTextField.getText().isEmpty());
-        String nil = Boolean.toString(inputTextField.getText() == null);
-
-        inputLabel.setText(validationString);
-
-        System.out.println("Label Should be Set to: " + validationString);
-        System.out.println("Input TextField: " + inputTextField.getText());
-        System.out.println("Null: " + nil + " isEmpty: " + isEmpty);
+ 
 
         return isNull;
 
     }
+    
+     public static boolean isNotEmpty(TextArea inputTextField) {
+        boolean isNull = true;
+
+
+        //point out difference between null and isEmpty() *FIND OUT WHEN TO USE NULL
+        if (inputTextField.getText().isEmpty()) {
+            isNull = false;
+              inputTextField.setStyle("-fx-border-color: red");
+        new Shake(inputTextField).play();
+        }
+          else
+        {
+            inputTextField.setStyle("-fx-border-color: transparent");
+
+        }
+ 
+
+        return isNull;
+
+    }
+     
+    
 
 }

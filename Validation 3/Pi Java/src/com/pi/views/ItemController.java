@@ -7,6 +7,8 @@ package com.pi.views;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.FlipInX;
+import animatefx.animation.FlipInY;
+import animatefx.animation.Pulse;
 import com.pi.Entities.Candidate;
 import com.pi.controllers.ListData;
 import java.io.FileInputStream;
@@ -89,14 +91,14 @@ public class ItemController implements Initializable {
 
     @FXML
     private void flipback(MouseEvent event) {
-                new FlipInX(face).play();
+                new Pulse(face).play();
                 face.toFront();
 
     }
 
     @FXML
     private void flip(MouseEvent event) {
-        new FlipInX(flip).play();
+        new Pulse(flip).play();
          flip.toFront();
 
     }

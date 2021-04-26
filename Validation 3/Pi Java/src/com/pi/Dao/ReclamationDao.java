@@ -120,6 +120,34 @@ String req="select * from reclamation";
     public boolean update(Reclamation os) {
         throw new UnsupportedOperationException("No option to update Claims."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+     public ObservableList<Reclamation> displayBySession(int id) {
+        
+        String req="select * from reclamation where user_id ="+id;
+          
+                   ObservableList<Reclamation> list=FXCollections.observableArrayList();       
+
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+           
+             Reclamation p=new Reclamation();
+                p.setId(rs.getInt(1));
+                p.setUser_id(rs.getInt(2));
+                p.setUser_email(rs.getString(3));
+                p.setSubject(rs.getString(4));
+                p.setClaim(rs.getString(5));
+                p.setSubmit_date(rs.getString(6));
+                p.setCstatus(rs.getInt(7));
+                                list.add(p);
+
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(EntrepriseDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return list;     
+    }
          
 
 

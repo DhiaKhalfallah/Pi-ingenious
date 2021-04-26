@@ -84,8 +84,6 @@ public class ListeCController implements Initializable {
     @FXML
     private TextField search;
     @FXML
-    private Button refresh1;
-    @FXML
     private JFXButton update;
     @FXML
     private JFXButton delete;
@@ -232,6 +230,17 @@ public class ListeCController implements Initializable {
 
                      CandidateDao pdao = CandidateDao.getInstance();
                      pdao.update(c1);
+                      try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/art_comm/Views/listeC.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+
+                stage.setScene(scene);
+      
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ListeCandidatController.class.getName()).log(Level.SEVERE, null, ex);
+            }
                           }
                        });
            
@@ -304,6 +313,17 @@ public class ListeCController implements Initializable {
                 CandidateDao cdao = CandidateDao.getInstance();
                   Candidate c =          cdao.displayById(x);
                   cdao.delete(c);
+                   try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/art_comm/Views/listeC.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();        
+
+                stage.setScene(scene);
+      
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ListeCandidatController.class.getName()).log(Level.SEVERE, null, ex);
+            }
                           }
                           }
           
@@ -344,7 +364,6 @@ public class ListeCController implements Initializable {
     private void back3bt(MouseEvent event) {
     }
 
-    @FXML
     private void refresh(MouseEvent event) {
      try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/art_comm/Views/listeC.fxml"));

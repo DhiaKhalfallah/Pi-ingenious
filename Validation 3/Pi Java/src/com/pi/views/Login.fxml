@@ -34,12 +34,12 @@
             <DropShadow blurType="ONE_PASS_BOX" color="#c6c0c0" height="14.83" radius="8.4575" />
          </effect>
       </PasswordField>
-      <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="519.0" layoutY="403.0" onMousePressed="#Loging" prefHeight="35.0" prefWidth="107.0" ripplerFill="#3af2ff" styleClass="loginButton" text="Login">
+      <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="589.0" layoutY="403.0" onMousePressed="#Loging" prefHeight="35.0" prefWidth="107.0" ripplerFill="#3af2ff" styleClass="loginButton" text="Login">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
       </JFXButton>
-      <Label layoutX="593.0" layoutY="478.0" onMousePressed="#opendash" text="Foroget Password?" textFill="WHITE">
+      <Label layoutX="563.0" layoutY="478.0" onMousePressed="#opendash" text="Forgot Password?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -65,14 +65,14 @@
             <Image url="@../images/exit.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="loginButton1" buttonType="RAISED" layoutX="663.0" layoutY="403.0" onMousePressed="#LogAdmin" prefHeight="35.0" prefWidth="107.0" ripplerFill="#3af2ff" styleClass="loginButton" text="LogAdmin">
-         <font>
-            <Font name="Arial Black" size="12.0" />
-         </font>
-      </JFXButton>
       <Label fx:id="error" layoutX="496.0" layoutY="260.0" prefHeight="17.0" prefWidth="300.0" textFill="RED">
          <font>
             <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="reset" layoutX="673.0" layoutY="478.0" onMousePressed="#resetP" text="Send a rest link" textFill="#94e1ff">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
    </children>

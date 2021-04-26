@@ -170,7 +170,7 @@ String req="select * from Candidate where id ="+id;
     }
     
         public Candidate authenticateUser(String Email,String Password) {
-          String req="select id,password from user where email ='"+Email+"' ";
+          String req="select id,password,email,ver_token from user where email ='"+Email+"' ";
            int id=0 ; 
           Candidate p=new Candidate();
 
@@ -180,6 +180,9 @@ String req="select * from Candidate where id ="+id;
             rs.next();
                 id=rs.getInt(1);
                 p.setPassword(rs.getString(2));
+                p.setEmail(rs.getString(3));
+                p.setVer_token(rs.getString(4));
+
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,7 +216,20 @@ String req="select * from Candidate where id ="+id;
     return p;     
         
         }
+        
+    public boolean ResetPass(String Email,String Token) {
+      String qry = "UPDATE user SET  passchange='"+Token+"' WHERE email='"+Email+"' " ;
+        
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;   
 
-
+    }
     
 }

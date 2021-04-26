@@ -295,7 +295,7 @@
                               <FontAwesomeIcon fx:id="backfont" iconName="UNDO" onMousePressed="#backfontaw" wrappingWidth="16.857142448425293" />
                            </graphic>
                         </Button>
-                        <Button fx:id="pdf" layoutX="829.0" layoutY="1.0" mnemonicParsing="false" onMousePressed="#pdf" prefHeight="40.0" prefWidth="155.0" style="-fx-background-color: #0fbcf9; -fx-background-radius: 0px; -fx-text-fill: white; -fx-font-family: Quicksand; -fx-font-weight: Bold; -fx-font-size: 17px;" text="Export To PDF" />
+                        <Button fx:id="pdf" layoutX="829.0" layoutY="1.0" mnemonicParsing="false"  prefHeight="40.0" prefWidth="155.0" style="-fx-background-color: #0fbcf9; -fx-background-radius: 0px; -fx-text-fill: white; -fx-font-family: Quicksand; -fx-font-weight: Bold; -fx-font-size: 17px;" text="Export To PDF" />
                      </children>
                   </Pane>
                   <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">

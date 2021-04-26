@@ -223,7 +223,7 @@ public class RegisterController implements Initializable {
 			
 			if(response == JFileChooser.APPROVE_OPTION) {
 				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                                String imagepath= file.getAbsolutePath();
+                                String imagepath= file.getAbsolutePath().replace("\\","\\\\");
                                 tfCV.setText(imagepath);}
     }
 
@@ -238,7 +238,7 @@ public class RegisterController implements Initializable {
 			
 			if(response == JFileChooser.APPROVE_OPTION) {
 				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                                String imagepath= file.getAbsolutePath();
+                                String imagepath= file.getAbsolutePath().replace("\\","\\\\");
                                 tfPic.setText(imagepath);
                         }
     }

@@ -124,6 +124,7 @@ String Blog[];
     private HBox dashboard;
     @FXML
     private Button back3;
+    @FXML
     private Button pdf;
     @FXML
     private Button refresh1;
@@ -134,76 +135,44 @@ String Blog[];
     @FXML
     private HBox sms;
     private Button full;
+    @FXML
     private Button create;
+    @FXML
     private TableView<Blog> blog;
     @FXML
-    private TextField id;
+    private TableColumn<?, ?> id;
+    @FXML
     private TableColumn<Blog, Integer> user;
+    @FXML
     private TableColumn<Blog, String> cat;
+    @FXML
     private TableColumn<Blog, String> date;
+    @FXML
     private TableColumn<Blog, String> contenu;
+    @FXML
     private TableColumn<Blog, String> titre;
+    @FXML
     private TableColumn<Blog, String> image;
+    @FXML
     private JFXTextField id1;
+    @FXML
     private JFXTextField user1;
+    @FXML
     private JFXTextField cat1;
+    @FXML
     private JFXDatePicker date1;
+    @FXML
     private JFXTextField contenu1;
+    @FXML
     private JFXTextField titre1;
+    @FXML
     private JFXTextField imapa1;
+    @FXML
     private JFXButton attach;
     @FXML
     private JFXButton update;
     @FXML
     private JFXButton delete;
-    @FXML
-    private TableView<?> CanTable;
-    @FXML
-    private TableColumn<?, ?> idC;
-    @FXML
-    private TableColumn<?, ?> nomC;
-    @FXML
-    private TableColumn<?, ?> prenomC;
-    @FXML
-    private TableColumn<?, ?> telC;
-    @FXML
-    private TableColumn<?, ?> paysC;
-    @FXML
-    private TableColumn<?, ?> govC;
-    @FXML
-    private TableColumn<?, ?> adresseC;
-    @FXML
-    private TableColumn<?, ?> cpC;
-    @FXML
-    private TableColumn<?, ?> bdC;
-    @FXML
-    private TableColumn<?, ?> ppC;
-    @FXML
-    private TableColumn<?, ?> cvC;
-    @FXML
-    private TableColumn<?, ?> AboutC;
-    @FXML
-    private TextField tfNom;
-    @FXML
-    private TextField tfPrenom;
-    @FXML
-    private TextField tfTel;
-    @FXML
-    private TextField TfPays;
-    @FXML
-    private TextField tfGouvernorat;
-    @FXML
-    private TextField tfAdresse;
-    @FXML
-    private TextField tfCodePostal;
-    @FXML
-    private DatePicker tfBday;
-    @FXML
-    private TextField tfPic;
-    @FXML
-    private TextField tfCV;
-    @FXML
-    private TextArea tfAboutyou;
 
     /**
      * Initializes the controller class.
@@ -382,6 +351,7 @@ String Blog[];
  
 
 
+    @FXML
     private void create(MouseEvent event) {
                  try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/art_comm/Views/Addblogf.fxml"));
@@ -557,6 +527,7 @@ String Blog[];
         
     }
 
+    @FXML
     private void attach(MouseEvent event) {
                JFileChooser fileChooser = new JFileChooser();
 			
@@ -642,21 +613,6 @@ String Blog[];
        stage.setFullScreen(true);
     }
 
-    @FXML
-    private void updateCan(MouseEvent event) {
-    }
-
-    @FXML
-    private void DeleteCan(MouseEvent event) {
-    }
-
-    @FXML
-    private void attachPic(MouseEvent event) {
-    }
-
-    @FXML
-    private void attachCv(MouseEvent event) {
-    }
 
 
 

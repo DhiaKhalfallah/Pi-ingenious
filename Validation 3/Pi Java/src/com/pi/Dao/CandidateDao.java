@@ -185,7 +185,7 @@ String req="select * from Candidate where id ="+id;
 
             //}  
         } catch (SQLException ex) {
-            Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No user found");
         }
         //Candidate 
         String req1="select * from Candidate where id ="+id;
@@ -210,7 +210,7 @@ String req="select * from Candidate where id ="+id;
                
             //}  
         } catch (SQLException ex) {
-            Logger.getLogger(CandidateDao.class.getName()).log(Level.SEVERE, null, ex);
+ System.out.println("No user found");
         }
         
     return p;     

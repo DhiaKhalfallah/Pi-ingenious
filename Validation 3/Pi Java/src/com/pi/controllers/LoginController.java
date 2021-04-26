@@ -6,6 +6,7 @@ import art_comm.Controllers.SplashScreenController;
 import com.jfoenix.controls.JFXButton;
 import com.pi.Dao.CandidateDao;
 import com.pi.Entities.Candidate;
+import com.pi.Utils.Sms;
 import drapo.dashboard.HomeController;
 import java.io.IOException;
 import java.net.URL;
@@ -112,7 +113,7 @@ public class LoginController implements Initializable {
             CandidateDao c= new CandidateDao();
             Candidate ca = new Candidate();
             Candidate can = new Candidate();
-            ca=c.authenticateUser(Email.getText(), Password.getText());
+            
             FXMLLoader loader;
                      if (Email.getText().equals("admin") && Password.getText().equals("admin")  )
                        {
@@ -158,7 +159,11 @@ public class LoginController implements Initializable {
                        
                        }
                      
-          else  if (ca.equals(can))
+          else  
+                        
+                     {
+                         ca=c.authenticateUser(Email.getText(), Password.getText());
+                         if (ca.equals(can))
             {
                               error.setText("Please Check Your Email!");
 
@@ -175,6 +180,8 @@ public class LoginController implements Initializable {
              
              if (test1.equals("Active"))
              {
+                 Sms s = new Sms();
+                 s.sendsms(ca.getTel());
             loader = new FXMLLoader( getClass().getResource( "/com/pi/views/Home.fxml" ));
               Scene scene = new Scene(loader.load());
               Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();   
@@ -209,6 +216,7 @@ public class LoginController implements Initializable {
               
 
 
+    }
     }
     //end
 
@@ -362,7 +370,8 @@ public class LoginController implements Initializable {
         }
         return null;
     }  
-            
+
+ 
 
   
       

@@ -96,7 +96,7 @@ public static boolean dataLength(TextField inputTextField, String requiredLength
     public static boolean emailFormat(TextField inputTextField) {
         boolean isEmail = true;
 
-        if (!inputTextField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com")) {
+        if (!inputTextField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-z]+")) {
             isEmail = false;
         inputTextField.setStyle("-fx-border-color: red");
         new Shake(inputTextField).play();

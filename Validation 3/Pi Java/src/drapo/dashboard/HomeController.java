@@ -39,6 +39,9 @@ import com.pi.views.ItemController;
 import java.io.FileNotFoundException;
 import com.pi.controllers.Excel;
 import com.pi.views.ClaimController;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,10 +60,13 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JFileChooser;
 import jxl.write.WriteException;
 import org.controlsfx.control.textfield.TextFields;
 
@@ -191,6 +197,8 @@ public class HomeController implements Initializable {
     private Label nom;
     @FXML
     private Label about;
+    @FXML
+    private ImageView pic;
     /**
      * Initializes the controller class.
      */
@@ -252,7 +260,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void Profile(MouseEvent event) {
+    private void Profile(MouseEvent event) throws FileNotFoundException {
         int tel1= currentUser.getTel() ; 
          Integer tell = new Integer(tel1);
         String mobile = tell.toString();
@@ -266,7 +274,9 @@ public class HomeController implements Initializable {
      prenom.setText(currentUser.getPrenom());
      nom.setText(currentUser.getNom());
      about.setText(currentUser.getAbout_you());
-        
+        InputStream stream = new FileInputStream(currentUser.getProfile_pic());
+    Image image1 = new Image(stream);
+    pic.setImage(image1);
             
             pn_MyProfile.toFront();
     }
@@ -407,10 +417,34 @@ public class HomeController implements Initializable {
 
     @FXML
     private void attachPic(MouseEvent event) {
+         JFileChooser fileChooser = new JFileChooser();
+			
+			fileChooser.setCurrentDirectory(new File(".")); //sets current directory
+			
+			int response = fileChooser.showOpenDialog(null); //select file to open
+			//int response = fileChooser.showSaveDialog(null); //select file to save
+			
+			if(response == JFileChooser.APPROVE_OPTION) {
+				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                                String imagepath= file.getAbsolutePath().replace("\\","\\\\");
+                                tfPic.setText(imagepath);
+                        }
     }
 
     @FXML
     private void attachCv(MouseEvent event) {
+              JFileChooser fileChooser = new JFileChooser();
+			
+			fileChooser.setCurrentDirectory(new File(".")); //sets current directory
+			
+			int response = fileChooser.showOpenDialog(null); //select file to open
+			//int response = fileChooser.showSaveDialog(null); //select file to save
+			
+			if(response == JFileChooser.APPROVE_OPTION) {
+				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                                String imagepath= file.getAbsolutePath().replace("\\","\\\\");
+                                tfPic.setText(imagepath);
+                        }
     }
 
     @FXML

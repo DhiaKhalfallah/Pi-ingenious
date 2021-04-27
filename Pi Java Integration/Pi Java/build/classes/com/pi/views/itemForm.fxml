@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drapo.dashboard.ItemFromController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="502.0">
+         <children>
+            <Text fx:id="nom" strokeType="OUTSIDE" strokeWidth="0.0" text="Blog Title" wrappingWidth="163.6708984375">
+               <font>
+                  <Font name="Lucida Sans Typewriter Bold" size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text fx:id="date" fill="#21a437" strokeType="OUTSIDE" strokeWidth="0.0" text="Blog Title" textAlignment="CENTER" wrappingWidth="178.6708984375">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Text>
+            <Text fx:id="datefin" fill="#dd2f2f" strokeType="OUTSIDE" strokeWidth="0.0" text="Blog Title" textAlignment="CENTER" wrappingWidth="181.6708984375">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <ImageView fx:id="img" fitHeight="143.0" fitWidth="288.0" pickOnBounds="true">
+         <VBox.margin>
+            <Insets left="40.0" right="30.0" />
+         </VBox.margin>
+         <image>
+            <Image url="@../images/logo.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" prefHeight="77.0" prefWidth="382.0">
+         <children>
+            <JFXButton fx:id="view" buttonType="RAISED" onMouseClicked="#viewbt" prefHeight="33.0" prefWidth="217.0" ripplerFill="#0fbcf9" style="-fx-background-color: #0fbcf9;" text="Acheter" textFill="WHITE">
+               <effect>
+                  <DropShadow color="#12e5ff" height="55.21" radius="29.4375" width="64.54" />
+               </effect>
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</VBox>

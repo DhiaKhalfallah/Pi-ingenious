@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="401.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drapo.dashboard.ItemeventController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="387.0" prefWidth="443.0">
+         <children>
+            <Pane fx:id="flip" layoutX="17.0" layoutY="30.0" onMousePressed="#flipback" prefHeight="344.0" prefWidth="411.0" style="-fx-background-color: #fff;">
+               <children>
+                  <ImageView fx:id="image" fitHeight="344.0" fitWidth="411.0" pickOnBounds="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="face" layoutX="17.0" layoutY="31.0" onMousePressed="#flip" prefHeight="338.0" prefWidth="411.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label fx:id="ide" visible="false" />
+                  <ImageView fitHeight="344.0" fitWidth="411.0" layoutY="-4.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/card.jpg" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="22.0" layoutY="95.0" prefHeight="7.0" prefWidth="372.0" />
+                  <Label fx:id="date" layoutX="12.0" layoutY="304.0" prefHeight="21.0" prefWidth="147.0" textFill="#4d4c4c">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="datef" layoutX="306.0" layoutY="304.0" prefHeight="25.0" prefWidth="96.0" textFill="#4d4c4c">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="384.0" layoutY="24.0" orientation="VERTICAL" prefHeight="64.0" prefWidth="0.0" />
+                  <Label fx:id="categroie" layoutX="162.0" layoutY="122.0" prefHeight="27.0" prefWidth="235.0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nom" layoutX="181.0" layoutY="35.0">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nbr" layoutX="334.0" layoutY="46.0">
+                     <graphic>
+                        <FontAwesomeIcon iconName="BED" />
+                     </graphic>
+                  </Label>
+                  <Label layoutX="12.0" layoutY="128.0" text="Categoire:">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="7.0" layoutY="227.0" text="Descritpion:">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="desc" layoutX="162.0" layoutY="227.0" prefHeight="27.0" prefWidth="235.0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="button" layoutX="173.0" layoutY="301.0" onMousePressed="#buttonpress" textFill="#1dd3fc">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <effect>
+                  <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
+               </effect>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

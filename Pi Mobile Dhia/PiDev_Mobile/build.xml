@@ -12,6 +12,8 @@
     <property name="automated" value="false" />
     <taskdef name="codeNameOne" classname="com.codename1.build.client.CodeNameOneBuildTask" classpath="CodeNameOneBuildClient.jar"/>
     <taskdef name="prepareTests" classname="com.codename1.build.client.PrepareTestsTask" classpath="CodeNameOneBuildClient.jar"/>
+    <taskdef name="installLibs" classname="com.codename1.build.client.InstallLibsTask" classpath="CodeNameOneBuildClient.jar"/>
+    <taskdef name="verifyDir" classname="com.codename1.build.client.VerifyDir" classpath="CodeNameOneBuildClient.jar"/>
     <taskdef name="generateGuiSources" classname="com.codename1.build.client.GenerateGuiSources" classpath="CodeNameOneBuildClient.jar"/>
     <taskdef name="initOfflineBuilder" classname="com.codename1.build.client.InitOfflineBuilder" classpath="CodeNameOneBuildClient.jar"/>
 
